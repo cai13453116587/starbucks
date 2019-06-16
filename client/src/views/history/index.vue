@@ -9,7 +9,7 @@
             <div class="top">
                 <div class="con">
                     <p><span>申请人</span><span>刘大雨</span></p>
-                    <p><span>部门</span><span>星巴克运营部</span></p>
+                    <p><span>部门</span><span @click="showText">星巴克运营部 中国 — 门店副经理</span></p>
                     <p><span>员工职务</span><span>p2</span></p>
                     <p><span>员工编号</span><span>06060606</span></p>
                 </div>
@@ -53,14 +53,15 @@ export default {
 
     },
     methods:{
-
+        showText(e){
+            this.$alert(e.target.innerText)
+        }
     },
     created(){
         api.history({
             params:{applicationNumber:this.$route.params.id}
         }).then(res=>{
             if(res.data){
-                console.log(res.data)
                 this.list = res.data
             }else{
                 this.$alert("暂无历史审批记录")
@@ -126,8 +127,12 @@ export default {
                   width: 50%;
                   height: 70%;
                   display: flex;
+                  
                   span{
                       flex: 1;
+                       white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                       &:nth-child(1){
                           color:#ccc;
                       }
@@ -164,6 +169,10 @@ export default {
                         width:100%;
                         flex:1;
                         color:#ccc;
+                        
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                         &:nth-child(3){
                             background: #ccc;
                             color:#999;

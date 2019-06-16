@@ -18,6 +18,8 @@ export default {
     //审批历史
     history:(data)=>request.get("/api/task/history",data),
     //同意
-    agree:(data)=>request.post("/api/task/approval",data)
+    agree:(data)=>request.post("/api/task/approval",data),
+    //注册
+    register:(data)=>request.post("/api/register",data)
 
 }

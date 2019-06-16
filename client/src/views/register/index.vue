@@ -1,15 +1,15 @@
 <template>
-    <div class="login">
+    <div>
         <h1>&times;</h1>
         <h2>欢迎来到星享俱乐部</h2>
-        <p><input type="text" placeholder="手机号" v-model="user"></p>
-        <p><input type="text" placeholder="验证码" v-model="pwd"></p>
-        <button @click="btn">登录</button>
-        <span @click="$router.push('/register')">注册</span>
+        <p><input type="text" placeholder="手机号" v-model="phone"></p>
+        <p><input type="text" placeholder="验证码" v-model="password"></p>
+        <button @click="btn">注册</button>
+        <span @click="$router.push('/login')">登录</span>
     </div>
 </template>
 <script>
-import api from "@/api"
+import api from "@/api";
 export default {
     props:{
 
@@ -19,9 +19,9 @@ export default {
     },
     data(){
         return {
-            user:"",
-            pwd:"",
-            userRed:/^1[3456789]\d{9}$/
+            phone:"",
+            password:"",
+             userRed:/^1[3456789]\d{9}$/
         }
     },
     computed:{
@@ -29,23 +29,28 @@ export default {
     },
     methods:{
         btn(){
-            if((this.pwd.trim() !== "") && (this.userRed.test(this.user.trim()))){
-               api.login({
-                        phone:this.user.trim(),
-                        password:this.pwd
+            if((this.password.trim() !== "") && (this.userRed.test(this.phone.trim()))){
+                api.register({
+                    phone:this.phone,
+                    password:this.password
                 }).then(res=>{
-                    window.localStorage.token = res.token;
-                    this.$router.push("/home")
-                }).catch(error=>{
-                    this.$alert(error.response.data.message)
+                    console.log(res)
+                    if(res.code){
+                        this.$alert("注册成功")
+                        this.$router.push("/login")
+                    }else{
+                        this.$alert("注册失败")
+                    }
+                    
                 })
             }else{
                 this.$alert("请正确输入")
             }
+            
         }
     },
     created(){
-
+        
     },
     mounted(){
 
@@ -77,7 +82,7 @@ h2{
 span{
     font-size: pxTorem(12px);
     padding-left:  pxTorem(30px);
-    color:red;
+    color:#00f;
 }
 p{  
     width: 80%;

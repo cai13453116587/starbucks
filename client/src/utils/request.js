@@ -1,9 +1,8 @@
 import axios from "axios"
 import router from "../router";
+import Vue from "vue"
 
-const request = axios.create({
-    baseURL:"http://169.254.126.200:3000"
-});
+const request = axios.create();
 request.interceptors.request.use((config)=>{
     return {
         ...config,
@@ -24,14 +23,13 @@ request.interceptors.response.use((response)=>{
     if(status > 400){
         switch(status){
             case 401:
-                console.log(response)
                 router.push('/login');
             break;
             case 403:
-                alert('没有权限');
+                this.$alert('没有权限');
             break;
             case 404:
-                alert('页面走丢了');
+                this.$alert('页面走丢了');
             break;
         }
     }

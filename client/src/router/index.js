@@ -50,6 +50,12 @@ let router = new Router({
         title:"同意"
       },
       component:()=>import("../views/agree")
+    },{
+      path:"/register",
+      meta:{
+        title:"注册"
+      },
+      component:()=>import("../views/register")
     }
   ]
 })
