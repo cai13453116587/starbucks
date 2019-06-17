@@ -74,9 +74,9 @@ npm start
 |     |——— src                              // 源码目录
 |     |    |—— api                          // 配置接口
 |     |    |—— components                   // 公共组件
-|     |    |    |—— popup.vue
-|     |    |    |—— shade.vue
-|     |    |—— directives                   //
+|     |    |    |—— popup.vue               // 弹框
+|     |    |    |—— shade.vue               // 遮罩
+|     |    |—— directives                   
 |     |    |—— plugins
 |     |    |—— router                       // 配置路由
 |     |    |—— static                       // 静态文件加载
