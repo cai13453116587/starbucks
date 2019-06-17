@@ -56,6 +56,12 @@ let router = new Router({
         title:"注册"
       },
       component:()=>import("../views/register")
+    },{
+      path:"/search",
+      meta:{
+        title:"搜索"
+      },
+      component:()=>import("../views/search")
     }
   ]
 })

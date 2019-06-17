@@ -4,7 +4,7 @@
             <span class="iconfont icon-arrow-left" @click="$router.go(-1)"></span>
             <span>加班/休假</span>
             <span>
-                <i class="iconfont icon-riqixuanze"></i><i class="iconfont icon-fangdajing"></i>
+                <i class="iconfont icon-riqixuanze"></i><i class="iconfont icon-fangdajing" @click="$router.push('/search')"></i>
             </span>
         </header>
         <Nav  @tab="tab"></Nav>
